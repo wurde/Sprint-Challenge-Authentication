@@ -3,6 +3,13 @@
  */
 
 import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import { RootRouter } from './routes/index'
+
+/**
+ * Import component styles
+ */
+
 import './App.scss'
 
 /**
@@ -11,11 +18,9 @@ import './App.scss'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        App
-      </header>
-    </div>
+    <BrowserRouter>
+      <RootRouter mount="/" />
+    </BrowserRouter>
   )
 }
 
