@@ -1,5 +1,20 @@
-const knex = require('knex');
+'use strict'
 
-const knexConfig = require('../knexfile.js');
+/**
+ * Dependencies
+ */
 
-module.exports = knex(knexConfig.development);
+const knex = require('knex')
+const config = require('../../knexfile.js')
+
+/**
+ * Define client
+ */
+
+const client = knex(config.development)
+
+/**
+ * Export client
+ */
+
+module.exports = client

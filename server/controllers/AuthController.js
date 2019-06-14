@@ -4,14 +4,8 @@
  * Dependencies
  */
 
-const jwt = require('jsonwebtoken')
-
-/**
- * Constants
- */
-
-const jwt_secret = process.env.JWT_SECRET ||
-  'add a .env file to root of project with the JWT_SECRET variable'
+const jsonwebtoken = require('jsonwebtoken')
+const secrets = require('../config/secrets')
 
 /**
  * Define controller
@@ -19,10 +13,10 @@ const jwt_secret = process.env.JWT_SECRET ||
 
 class AuthController {
   static require_jwt_token(req, res) {
-    const token = req.get('Authorization')
+    const token = req.header('Authorization')
 
     if (token) {
-      jwt.verify(token, jwtKey, (err, decoded) => {
+      jsonwebtoken.verify(token, secrets.jsonwebtoken_secret, (err, decoded) => {
         if (err) return res.status(401).json(err)
 
         req.decoded = decoded
