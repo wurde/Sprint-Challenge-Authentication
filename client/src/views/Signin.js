@@ -41,17 +41,17 @@ class Signin extends Component {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-10 col-md-8 col-lg-5" style={{ marginTop: '80px' }}>
-              <h3>Signin</h3>
+              <h3>Sign In</h3>
 
               <form onSubmit={this.handleOnSubmit}>
                 <div className="form-group">
-                  <label htmlFor="username">Username</label>
-                  <input id="username" type="text" required id="input-username" name="username" value={this.state.username} onChange={this.handleOnChange} className="form-control" autoFocus={true} />
+                  <label htmlFor="input-username">Username</label>
+                  <input id="input-username" type="text" required name="username" value={this.state.username} onChange={this.handleOnChange} className="form-control" autoFocus={true} />
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="password">Password</label>
-                  <input id="password" type="password" required id="input-password" name="password" value={this.state.password} onChange={this.handleOnChange} className="form-control" />
+                  <label htmlFor="input-password">Password</label>
+                  <input id="input-password" type="password" required name="password" value={this.state.password} onChange={this.handleOnChange} className="form-control" />
                 </div>
 
                 <button type="submit" className="btn btn-block btn-primary">
