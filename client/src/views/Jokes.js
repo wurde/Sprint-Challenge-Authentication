@@ -5,6 +5,8 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import { JokesStyle } from './styles/index'
+import '../auth/addInterceptors'
+import requiresAuth from '../auth/requiresAuth'
 
 /**
  * Define component
@@ -50,4 +52,4 @@ class Jokes extends Component {
  * Export component
  */
 
-export default Jokes
+export default requiresAuth(Jokes)
