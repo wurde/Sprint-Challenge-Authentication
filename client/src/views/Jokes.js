@@ -27,6 +27,12 @@ class Jokes extends Component {
       })
   }
 
+  handleSignOut = (event) => {
+    event.preventDefault()
+    localStorage.removeItem('jwt')
+    this.props.history.push('/signin')
+  }
+
   render() {
     return (
       <JokesStyle>
@@ -34,6 +40,8 @@ class Jokes extends Component {
           <div className="row justify-content-center">
             <div className="col-10 col-md-8 col-lg-5" style={{ marginTop: '80px' }}>
               <h3>Jokes</h3>
+
+              <a href="#" onClick={this.handleSignOut}>Sign out</a>
 
               <ul>
                 {this.state.jokes.map(joke => (
