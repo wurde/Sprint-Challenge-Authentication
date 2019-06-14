@@ -5,6 +5,7 @@
  */
 
 const express = require('express')
+const require_user_param = require('../middleware/require_user_param')
 const AuthController = require('../controllers/AuthController')
 const RootController = require('../controllers/RootController')
 
@@ -28,6 +29,7 @@ router.route('/')
  */
 
 router.route('/register')
+  .all(require_user_param)
   .post(RootController.register)
 
 /**
@@ -36,6 +38,7 @@ router.route('/register')
  */
 
 router.route('/login')
+  .all(require_user_param)
   .post(RootController.login)
 
 /**

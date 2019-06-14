@@ -21,7 +21,7 @@ class RootController {
     try {
       const password_hash = bcryptjs.hashSync(req.body.password, 13)
 
-      let user = await User.create({
+      const user = await User.create({
         username: req.body.username,
         password_hash: password_hash
       })
@@ -36,7 +36,24 @@ class RootController {
   }
 
   static async login(req, res) {
-    res.sendStatus(200)
+    try {
+      const user = await User.find({ username: req.body.username })
+
+      if (user) {
+        if (bcryptjs.compareSync(req.body.password, user.password_hash)) {
+          const token = await User.generate_token(user)
+
+          res.status(200).json({user, token})
+        } else {
+          res.status(401).json({ error: { message: 'Invalid Credentials' }})
+        }
+      } else {
+        res.status(404).json({ error: { message: `User not found for ${req.body.username}` }})
+      }
+    } catch(err) {
+      console.error(err)
+      res.status(500).json({ error: { message: 'Internal Server Error' }})
+    }
   }
 
   static jokes(req, res) {
