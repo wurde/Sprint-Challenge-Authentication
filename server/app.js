@@ -41,6 +41,12 @@ app.use(express.json())
 app.use('/', require('./routes/root_router.js'))
 
 /**
+ * Error Handlers
+ */
+
+app.use(require('./middleware/error_handler'))
+
+/**
  * Start server
  */
 
