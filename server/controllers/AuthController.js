@@ -12,7 +12,7 @@ const secrets = require('../config/secrets')
  */
 
 class AuthController {
-  static require_jwt_token(req, res) {
+  static require_jwt_token(req, res, next) {
     const token = req.header('Authorization')
 
     if (token) {
